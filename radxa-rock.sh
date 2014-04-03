@@ -7,9 +7,12 @@ fi
 
 basedir=`pwd`/radxa_rock-$1
 
-#Based kali-arm-build-scripts/mini-x.sh
+#Based on kali-arm-build-scripts/mini-x
 echo "Download the kali-arm-build-scripts"
 git clone https://github.com/offensive-security/kali-arm-build-scripts.git
+cd kali-arm-build-scripts
+./build-deps.sh
+
 # Package installations for various sections.
 # This will build a minimal XFCE Kali system with the top 10 tools.
 # This is the section to edit if you would like to add more packages.
@@ -178,8 +181,6 @@ cd ${basedir}
 git clone https://github.com/offensive-security/gcc-arm-linux-gnueabihf-4.7
 export PATH=${PATH}:${basedir}/gcc-arm-linux-gnueabihf-4.7/bin
 git clone https://github.com/offensive-security/kali-arm-build-scripts
-cd ${basedir}/kali-arm-build-scripts
-./build-deps.sh
 cd ${basedir}
 export ARCH=arm
 export CROSS_COMPILE=arm-linux-gnueabihf-
